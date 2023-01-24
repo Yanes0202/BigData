@@ -1,12 +1,8 @@
 package san.edu.tables;
 
-import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@Entity
 @Table(name = "MaleFullName")
-@Data
-public class MaleFullName {
+public class MaleFullName extends BaseTable{
 }

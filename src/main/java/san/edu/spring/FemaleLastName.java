@@ -1,11 +1,11 @@
-package san.edu.tables;
+package san.edu.spring;
 
 import lombok.Data;
 
 import javax.persistence.*;
 
+@Table(name = "last")
 @Entity
-@Table(name = "FemaleLastName")
 @Data
 public class FemaleLastName {
     @Id
