@@ -2,11 +2,15 @@ package san.edu.tables;
 
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.GenerationType;
 
 @Entity
-@Table(name = "FemaleLastName")
 @Data
+@Table(name = "FemaleLastName")
 public class FemaleLastName {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
