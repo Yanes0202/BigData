@@ -3,10 +3,8 @@ package san.edu.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import san.edu.repositories.FemaleFullNameRepository;
+import org.springframework.web.bind.annotation.*;
+import san.edu.services.Services;
 import san.edu.tables.FemaleFullName;
 import san.edu.utils.CsvUtils;
 
@@ -18,21 +16,22 @@ import java.util.List;
 public class FemaleFullNameController {
 
     @Autowired
-    private FemaleFullNameRepository repository;
+    Services services;
 
+//    @PostConstruct
+//    public void postConstruct() {
+//        List<FemaleFullName> femaleFullName = CsvUtils.mapFemaleFullName();
+//        services.femaleFullNameRepository.saveAll(femaleFullName);
+//    }
 
-    @PostConstruct
-    public void postConstruct() {
-        List<FemaleFullName> femaleFullName = CsvUtils.mapFemaleFullName();
-        repository.saveAll(femaleFullName);
+    @GetMapping(path = "/getAll")
+    public ResponseEntity<List<FemaleFullName>> getAll() {
+        return new ResponseEntity<>(services.getAllFemaleFullNames(), HttpStatus.OK);
     }
 
-    @GetMapping(path ="/getAll")
-    public ResponseEntity<List<FemaleFullName>> getAll(){
-        List<FemaleFullName> list = (List<FemaleFullName>) repository.findAll();
-
-        return new ResponseEntity<>(list, HttpStatus.OK);
+    @GetMapping(path = "/")
+    public ResponseEntity<List<FemaleFullName>> findByFullName(@RequestParam(name = "fullName") String fullName) {
+        return new ResponseEntity<>(services.findFemaleFullNamesByFullName("%"+fullName+"%"), HttpStatus.OK);
     }
-
 
 }
