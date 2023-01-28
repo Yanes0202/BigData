@@ -1,16 +1,13 @@
 package san.edu.tables;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
-import javax.persistence.*;
+import javax.persistence.Table;
 
-@Entity
+@EqualsAndHashCode(callSuper = true)
 @Data
 @Table(name = "FemaleFullName")
-public class FemaleFullName {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class FemaleFullName extends BaseTable {
     private String fullName;
-    private Integer count;
 }

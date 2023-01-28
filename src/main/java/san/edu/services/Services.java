@@ -1,33 +1,16 @@
 package san.edu.services;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import san.edu.repositories.FemaleFullNameRepository;
-import san.edu.repositories.FemaleLastNameRepository;
-import san.edu.repositories.MaleFullNameRepository;
-import san.edu.repositories.MaleLastNameRepository;
-import san.edu.tables.FemaleFullName;
+import san.edu.tables.BaseTable;
 
 import java.util.List;
 
 @Service
-public class Services {
-    @Autowired
-    FemaleFullNameRepository femaleFullNameRepository;
-    @Autowired
-    FemaleLastNameRepository femaleLastNameRepository;
-    @Autowired
-    MaleFullNameRepository maleFullNameRepository;
-    @Autowired
-    MaleLastNameRepository maleLastNameRepository;
+public interface Services {
 
-    public List<FemaleFullName> getAllFemaleFullNames() {
-        return (List<FemaleFullName>) femaleFullNameRepository.findAll();
-    }
+    List<? extends BaseTable> getAllNames();
 
-    public List<FemaleFullName> findFemaleFullNamesByFullName(String fullName) {
-        return femaleFullNameRepository.findByFullNameLike(fullName);
-    }
+    List<? extends BaseTable> filterByName(String name);
 
 
 }
