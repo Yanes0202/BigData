@@ -1,16 +1,15 @@
 package san.edu.services;
 
 import org.springframework.stereotype.Service;
-import san.edu.tables.BaseTable;
 
 import java.util.List;
 
 @Service
-public interface Services {
+public interface Services<T> {
 
-    List<? extends BaseTable> getAllNames();
+    List<T> getAllNames();
 
-    List<? extends BaseTable> filterByName(String name);
+    List<T> filterByName(String name);
 
-
+    void saveAll(List<T> list);
 }

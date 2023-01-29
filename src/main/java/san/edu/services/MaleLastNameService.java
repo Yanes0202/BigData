@@ -8,9 +8,9 @@ import san.edu.tables.MaleLastName;
 
 import java.util.List;
 
-@Qualifier("MaleLastNameService")
 @Service
-public class MaleLastNameService implements Services {
+@Qualifier("MaleLastNameService")
+public class MaleLastNameService implements Services<MaleLastName> {
 
     @Autowired
     public MaleLastNameRepository maleLastNameRepository;
@@ -23,6 +23,11 @@ public class MaleLastNameService implements Services {
     @Override
     public List<MaleLastName> filterByName(String lastName) {
         return maleLastNameRepository.findByLastNameLike(lastName);
+    }
+
+    @Override
+    public void saveAll(List<MaleLastName> list) {
+        maleLastNameRepository.saveAll(list);
     }
 
 }

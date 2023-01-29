@@ -2,16 +2,15 @@ package san.edu.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import san.edu.repositories.FemaleFullNameRepository;
 import san.edu.tables.FemaleFullName;
 
 import java.util.List;
 
-@Qualifier("FemaleFullNameService")
 @Service
-public class FemaleFullNameService implements Services {
+@Qualifier("FemaleFullNameService")
+public class FemaleFullNameService implements Services<FemaleFullName> {
 
     @Autowired
     public FemaleFullNameRepository femaleFullNameRepository;
@@ -24,6 +23,11 @@ public class FemaleFullNameService implements Services {
     @Override
     public List<FemaleFullName> filterByName(String fullName) {
         return femaleFullNameRepository.findByFullNameLike(fullName);
+    }
+
+    @Override
+    public void saveAll(List<FemaleFullName> list) {
+        femaleFullNameRepository.saveAll(list);
     }
 
 }
