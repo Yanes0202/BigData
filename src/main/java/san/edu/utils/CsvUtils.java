@@ -14,6 +14,8 @@ import java.util.List;
 
 public class CsvUtils {
 
+    private CsvUtils(){}
+
     private static final String PATH = System.getProperty("user.dir") + "/src/main/resources/data/";
 
     public static List<FemaleLastName> mapFemaleLastName() {

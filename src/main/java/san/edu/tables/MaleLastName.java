@@ -2,14 +2,10 @@ package san.edu.tables;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.GenerationType;
+import javax.persistence.*;
 
-@Entity
 @Data
+@Entity
 @Table(name = "MaleLastName")
 public class MaleLastName {
     @Id
